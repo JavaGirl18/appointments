@@ -1,9 +1,23 @@
-import { combineReducers } from 'redux'
-import todos from './todoReducer'
+const defaultState=[
+    {
+     appointmentTime: Date,  
+     name: String, 
+     number: Number,
+     set: false 
+    },
+    {
+        appointmentTime: Date,  
+        name: String, 
+        number: Number,
+        set: false 
+       }
+]
 
-// Combine all our reducers together
-const rootReducer = combineReducers({
-  todos
-})
+function appointments (state = defaultState, action){
+    switch (action.type){
+        default:
+        return state
+    }
+}
 
-export default rootReducer
+export default appointments
