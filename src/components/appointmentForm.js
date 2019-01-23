@@ -2,7 +2,11 @@ import React, { Component } from 'react';
 
 class appointmentForm extends Component {
 state = {
-    newAppointment:''
+    newAppointment = {
+        appointmentTime:'',
+        name:"",
+        number:''
+    }
 }
 
 handleChange = (event)=>{
@@ -17,10 +21,22 @@ handleSubmit = (event) => {
   }
 
     render() {
+
         return (
-            <div>
-                
-            </div>
+            <form onSubmit={this.handleSubmit}>
+                 <input
+          onChange={this.handleChange}
+          value={this.state.newAppointment.appointmentTime}
+        />
+                     <input
+          onChange={this.handleChange}
+          value={this.state.newAppointment.name}
+        />
+                    <input
+          onChange={this.handleChange}
+          value={this.state.newAppointment.number}
+        />
+            </form>
         );
     }
 }
