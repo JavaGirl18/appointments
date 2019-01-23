@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux'
-import todos from './todoReducer'
+import appointments from './appointmentsReducer'
 
 // Combine all our reducers together
 const rootReducer = combineReducers({
-  todos
+  appointments
 })
 
 export default rootReducer
