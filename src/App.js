@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Switch, BrowserRouter as Router, Route } from 'react-router-dom'
 import './App.css';
 import Appts from './components/Appointments'
+import Modal from './components/appointmentForm'
 
 class App extends Component {
   render() {
@@ -9,14 +10,22 @@ class App extends Component {
 
     const AllAppointments = (props) => {
       return (
-        <Appts appointments {...props} />
+        <Appts  {...props} />
+      )
+    }
+    const Form = (props) => {
+      return (
+        <Modal  {...props} />
       )
     }
     return (
-      <Router> 
-     
-         <Route exact path='/' component={AllAppointments}></Route>
-       </Router>
+      <Router>
+        <Switch>
+
+              <Route exact path='/' render={AllAppointments}></Route> 
+              <Route exact path='/newAppointment' render={Form}></Route> 
+     </Switch>
+     </Router>
     );
   }
 }
