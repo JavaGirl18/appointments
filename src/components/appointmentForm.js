@@ -26,30 +26,47 @@ padding: 30
 
 class AppointmentForm extends React.Component {
 state = {
-    newAppointment : {
-},
-        showModal: false
+    newAppointment :{
+        name:"",
+        number:''
+    },
+       isOpen: false
 }
 
 handleChange = (event)=>{
     console.log(event.target.value)
     const attributeName = event.target.name
     const attributeValue = event.target.value
-    const newAppointment = {
+    const copyOfNewAppointment = {
         ...this.state.newAppointment
     }
-    newAppointment[attributeName] = attributeValue
-
-    // this.setState({ newAppointment })
-    this.setState({newAppointment: event.target.value, showModal: true})
+    
+    copyOfNewAppointment[attributeName] = attributeValue
+    this.setState({ newAppointment: copyOfNewAppointment})
+    
 }
+//  close=()=>{
+//     this.props.onClose
+// }
 
 handleSubmit = (event) => {
     console.log("submitting")
     event.preventDefault()
     this.props.addAppointment(this.state.newAppointment)
-    this.setState({ newAppointment: '' })
+alert('appointment created')
+if(alert){
+this.props.onClose()
+}
 
+  }
+
+
+
+  toggleModal = () => {
+    console.log('toggle')
+    this.setState({
+      isOpen: !this.state.isOpen
+    });
   }
 
     render() {
@@ -59,23 +76,25 @@ handleSubmit = (event) => {
     }
     
         return (
-            <Backdrop>
+            <Backdrop id='form'>
 
             <form onSubmit={this.handleSubmit}>
             {this.props.children}
            
                      <input
           onChange={this.handleChange}
+          name='name'
           value={this.state.newAppointment.name}
-          placeholder={this.state.newAppointment.name}
+        //   placeholder={this.state.newAppointment.name}
         />
                     <input
           onChange={this.handleChange}
+          name='number'
           value={this.state.newAppointment.number}
-          placeholder={this.state.newAppointment.number}
+        //   placeholder={this.state.newAppointment.number}
         />
         <div className="footer">
-            <input type="submit" value="  Create New Appointment"  />
+            <input type='submit' value="  Create New Appointment"  />
           
          
           </div>

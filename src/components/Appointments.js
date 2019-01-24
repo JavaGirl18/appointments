@@ -61,7 +61,7 @@ super(props)
         <AppointmentForm 
         show={this.state.isOpen}
           onClose={this.toggleModal}>
-     
+    
         </AppointmentForm>
           
      </Container>
