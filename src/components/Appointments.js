@@ -16,7 +16,6 @@ box-shadow:  10px 10px 5px #888888;
 `
 const Container = styled.div`
 padding: 30px;
-
 display: flex;
 justify-content: space-between;
 `
@@ -29,16 +28,19 @@ super(props)
 }
 
   toggleModal = () => {
+    console.log('toggle')
     this.setState({
       isOpen: !this.state.isOpen
     });
   }
 
 
-    render() {
+    render()    
+    
+       {
         return (
-            <div>
-            <Container>
+         <div>
+          <Container>
                 
                     {this.props.appointments.map(appointment=>(
                         <Card key={appointment.id}>
@@ -54,9 +56,11 @@ super(props)
     ))}
              
             </Container>
+          
+     </div>
 
            
-            </div>  
+           
         );
    
        

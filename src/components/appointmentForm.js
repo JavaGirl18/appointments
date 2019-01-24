@@ -24,7 +24,7 @@ padding: 50
 // padding: 30
 // `
 
-class appointmentForm extends React.Component {
+class AppointmentForm extends React.Component {
 state = {
     newAppointment : {
         appointmentTime:'',
@@ -76,11 +76,11 @@ handleSubmit = (event) => {
     }
 }
 
-appointmentForm.propTypes = {
+AppointmentForm.propTypes = {
     onClose: PropTypes.func.isRequired,
     onSubmit: PropTypes.func.isRequired,
     show: PropTypes.bool,
     children: PropTypes.node
   };
 
-export default connect(null, { addAppointment })(appointmentForm) 
+export default connect(null, { addAppointment })(AppointmentForm) 
