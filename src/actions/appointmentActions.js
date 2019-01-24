@@ -1,12 +1,11 @@
 import uuid from 'uuid'
 
-export function addAppointment (name, number){
+export function addAppointment (appointmentTime){
     return{
         type: "Add_Appointment",
         appointment:{
             id: uuid(),
-            name: name,
-            number:number,
+            appointmentTime,
             set: false
         }
     }
@@ -18,3 +17,4 @@ export function toggleSet (id) {
       id
     }
   }
+

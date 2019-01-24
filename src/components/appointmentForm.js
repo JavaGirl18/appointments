@@ -13,6 +13,7 @@ left: 0,
 right: 0,
 backgroundColor: 'rgba(0,0,0,0.3)',
 padding: 50
+border:solid;
 
 `
 const Form = styled.div`
@@ -26,10 +27,10 @@ padding: 30
 
 class AppointmentForm extends React.Component {
 state = {
-    newAppointment :{
+    newAppointment :[{
         name:"",
         number:''
-    },
+    }],
        isOpen: false
 }
 
@@ -42,7 +43,7 @@ handleChange = (event)=>{
     }
     
     copyOfNewAppointment[attributeName] = attributeValue
-    this.setState({ newAppointment: copyOfNewAppointment})
+    this.setState([{ newAppointment: copyOfNewAppointment}])
     
 }
 //  close=()=>{
@@ -76,17 +77,18 @@ this.props.onClose()
     }
     
         return (
-            <Backdrop id='form'>
+            <Backdrop>
 
             <form onSubmit={this.handleSubmit}>
             {this.props.children}
-           
-                     <input
+           <label>Enter your name</label>
+                     <input 
           onChange={this.handleChange}
           name='name'
           value={this.state.newAppointment.name}
         //   placeholder={this.state.newAppointment.name}
         />
+        <label>Enter your number</label>
                     <input
           onChange={this.handleChange}
           name='number'
@@ -100,11 +102,13 @@ this.props.onClose()
           </div>
      
             </form>
-            </Backdrop>
+           
+           <addAppointment/>
+         </Backdrop>
         );
     }
 }
-
+ 
 AppointmentForm.propTypes = {
     onClose: PropTypes.func.isRequired,
     // onSubmit: PropTypes.func.isRequired,
