@@ -57,13 +57,12 @@ super(props)
         return (
          <Container>
         {allAppointments}
-        <button onClick={this.toggleModal}>
-          Open the modal
-        </button>
+  
         <AppointmentForm 
         show={this.state.isOpen}
           onClose={this.toggleModal}>
-        </AppointmentForm>/>
+     
+        </AppointmentForm>
           
      </Container>
 

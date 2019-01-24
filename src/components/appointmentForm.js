@@ -15,37 +15,45 @@ backgroundColor: 'rgba(0,0,0,0.3)',
 padding: 50
 
 `
-// const Form = styled.div`
-// backgroundColor: '#fff',
-// borderRadius: 5,
-// maxWidth: 500,
-// minHeight: 300,
-// margin: '0 auto',
-// padding: 30
-// `
+const Form = styled.div`
+backgroundColor: '#fff',
+borderRadius: 5,
+maxWidth: 500,
+minHeight: 300,
+margin: '0 auto',
+padding: 30
+`
 
 class AppointmentForm extends React.Component {
 state = {
     newAppointment : {
-        appointmentTime:'',
-        name:"",
-        number:''
-    },
+},
         showModal: false
 }
 
 handleChange = (event)=>{
     console.log(event.target.value)
-    this.setState({newAppointment: event.target.vale})
+    const attributeName = event.target.name
+    const attributeValue = event.target.value
+    const newAppointment = {
+        ...this.state.newAppointment
+    }
+    newAppointment[attributeName] = attributeValue
+
+    // this.setState({ newAppointment })
+    this.setState({newAppointment: event.target.value, showModal: true})
 }
 
 handleSubmit = (event) => {
+    console.log("submitting")
     event.preventDefault()
     this.props.addAppointment(this.state.newAppointment)
     this.setState({ newAppointment: '' })
+
   }
 
     render() {
+        console.log(this.state)
   if(!this.props.show) {
       return null;
     }
@@ -54,22 +62,22 @@ handleSubmit = (event) => {
             <Backdrop>
 
             <form onSubmit={this.handleSubmit}>
-            {/* {this.props.children} */}
-                 <input
-          value={this.state.newAppointment.appointmentTime}
-        />
+            {this.props.children}
+           
                      <input
           onChange={this.handleChange}
           value={this.state.newAppointment.name}
+          placeholder={this.state.newAppointment.name}
         />
                     <input
           onChange={this.handleChange}
           value={this.state.newAppointment.number}
+          placeholder={this.state.newAppointment.number}
         />
         <div className="footer">
-            <button onClick={this.handleSubmit}  >
-            Create New Appointment
-            </button>
+            <input type="submit" value="  Create New Appointment"  />
+          
+         
           </div>
      
             </form>
@@ -80,7 +88,7 @@ handleSubmit = (event) => {
 
 AppointmentForm.propTypes = {
     onClose: PropTypes.func.isRequired,
-    onSubmit: PropTypes.func.isRequired,
+    // onSubmit: PropTypes.func.isRequired,
     show: PropTypes.bool,
     children: PropTypes.node
   };
