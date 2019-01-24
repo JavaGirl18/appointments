@@ -24,7 +24,7 @@ padding: 50
 // padding: 30
 // `
 
-class appointmentForm extends Component {
+class appointmentForm extends React.Component {
 state = {
     newAppointment : {
         appointmentTime:'',
@@ -47,10 +47,7 @@ handleSubmit = (event) => {
 
     render() {
 
-        if(!this.props.show) {
-            return null;
-          }
-
+    
         return (
             <Backdrop>
 
@@ -86,4 +83,4 @@ appointmentForm.propTypes = {
     children: PropTypes.node
   };
 
-export default connect(null, { addAppointment })(appointmentForm)
+export default connect(null, { addAppointment })(appointmentForm) 

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux'
 import {toggleSet} from '../actions/appointmentActions'
 import styled from 'styled-components'
-import {appointmentForm  } from "./appointmentForm";
+import {AppointmentForm  } from "./AppointmentForm";
 
 
 const Card=styled.div`
@@ -54,8 +54,12 @@ super(props)
     ))}
              
             </Container>
-            </div>
+
+           
+            </div>  
         );
+   
+       
 
  
      
@@ -69,5 +73,5 @@ const mapStateToProps = (state) => {
     }
   }
   
-  export default connect(mapStateToProps, {toggleSet})(Appointments)
+  export default connect(mapStateToProps) (Appointments)
 
