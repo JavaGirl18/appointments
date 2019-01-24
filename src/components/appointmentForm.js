@@ -46,13 +46,15 @@ handleSubmit = (event) => {
   }
 
     render() {
-
+  if(!this.props.show) {
+      return null;
+    }
     
         return (
             <Backdrop>
 
             <form onSubmit={this.handleSubmit}>
-            {this.props.children}
+            {/* {this.props.children} */}
                  <input
           value={this.state.newAppointment.appointmentTime}
         />

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux'
 import {toggleSet} from '../actions/appointmentActions'
 import styled from 'styled-components'
-import {AppointmentForm  } from "./AppointmentForm";
+import AppointmentForm  from "./AppointmentForm";
 
 
 const Card=styled.div`
@@ -37,12 +37,10 @@ super(props)
 
     render()    
     
-       {
-        return (
-         <div>
-          <Container>
+       {  
+       const allAppointments = 
                 
-                    {this.props.appointments.map(appointment=>(
+                    this.props.appointments.map(appointment=>(
                         <Card key={appointment.id}>
                         <ul>
                         <li>
@@ -53,11 +51,21 @@ super(props)
                               </ul>
                               <button onClick={()=> this.toggleModal()}>Make Appointment</button>
                               </Card>
-    ))}
+    ))
              
-            </Container>
           
-     </div>
+        return (
+         <Container>
+        {allAppointments}
+        <button onClick={this.toggleModal}>
+          Open the modal
+        </button>
+        <AppointmentForm 
+        show={this.state.isOpen}
+          onClose={this.toggleModal}>
+        </AppointmentForm>/>
+          
+     </Container>
 
            
            
@@ -77,5 +85,5 @@ const mapStateToProps = (state) => {
     }
   }
   
-  export default connect(mapStateToProps) (Appointments)
+  export default connect(mapStateToProps)(Appointments)
 
