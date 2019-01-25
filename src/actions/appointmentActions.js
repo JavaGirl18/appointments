@@ -7,14 +7,19 @@ export const getAppointments = () => dispatch => {
     fetch('db.json')
       .then(res => res.json())
     // .then(res => res.text())          // convert to plain text
-  .then(json => console.log(json))
+//   .then(json => console.log(json))
       .then(appointments =>
         dispatch({
           type: GET_APPOINTMENTS,
-          appointments: appointments
+          payload: appointments
         })
-      );
-  };
+      )
+      .catch((err) => {
+        console.log('ERROR', err)
+    })
+    
+  }
+
 
 export const addAppointment = appointmentData => dispatch =>{
     fetch('db.json', {

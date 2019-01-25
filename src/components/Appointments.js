@@ -26,7 +26,8 @@ class Appointments extends Component {
 
 componentWillMount(){
   this.props.getAppointments()
-console.log(this.props.appointments)
+console.log(this.props)
+
 }
 
   toggleModal = () => {
@@ -75,6 +76,11 @@ console.log(this.props.appointments)
  
      
     }
+  }
+
+  Appointments.prototypes={
+    getAppointments: PropTypes.func.isRequired,
+    appointments: PropTypes.array.isRequired
   }
 
 

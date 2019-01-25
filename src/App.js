@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import { Switch, BrowserRouter as Router, Route } from 'react-router-dom'
+import { Provider } from 'react-redux'
+import store from './configureStore';
 import './App.css';
 import Appts from './Components/Appointments'
 import Modal from './Components/AppointmentForm'
 
 class App extends Component {
+
   render() {
 
 
@@ -19,9 +21,9 @@ class App extends Component {
       )
     }
     return (
-      <div>
+      <Provider store={store}>
         <AllAppointments/>
-      </div>
+      </Provider>
     );
   }
 }
