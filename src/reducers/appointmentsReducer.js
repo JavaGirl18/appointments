@@ -1,27 +1,29 @@
-const defaultState=[
-    {
-        id: 0,
-     appointmentTime: "9 a.m.",  
-     set: false 
-    },
-    {
-        id: 1,
-        appointmentTime: "10 a.m",  
-        set: false 
-       },
-       {
-        id: 2,
-        appointmentTime: "11 a.m",  
-        set: false 
-       }
-]
+import {GET_APPOINTMENTS, ADD_APPOINTMENT} from '../actions/types'
 
-function appointments (state = defaultState, action){
+
+
+
+const defaultState={
+   appointments:[],
+       appointment:{}
+    }
+
+  
+
+
+export default function(state = defaultState, action){
     switch (action.type){
         default:
-      return state
-       case 'ADD_APPOINTMENT':
-        return [...state, action.appointment]
+      return state;
+      case GET_APPOINTMENTS:
+      return {
+          ...state,
+          appointments: action.payload
+      }
+       case ADD_APPOINTMENT:
+        return {...state,
+             appointment: action.payload
+            };
         case 'TOGGLE_SET':
         const newState = state.map(appointment=>{
             if (appointment.id === action.id){
@@ -33,4 +35,4 @@ function appointments (state = defaultState, action){
     }
 }
 
-export default appointments
+// export default appointments

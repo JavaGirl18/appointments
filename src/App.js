@@ -19,13 +19,9 @@ class App extends Component {
       )
     }
     return (
-      <Router>
-        <Switch>
-
-              <Route exact path='/' render={AllAppointments}></Route> 
-              <Route exact path='/newAppointment' render={Form}></Route> 
-     </Switch>
-     </Router>
+      <div>
+        <Appts/>
+      </div>
     );
   }
 }

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux'
 import {toggleSet} from '../actions/appointmentActions'
 import styled from 'styled-components'
+import {getAppointments} from '../actions/appointmentActions'
 import AppointmentForm  from "./AppointmentForm";
 
 
@@ -21,10 +22,12 @@ justify-content: space-between;
 `
 
 class Appointments extends Component {
-    constructor(props){
-super(props)
- this.state = { isOpen: false };
-  
+  state={
+    isOpen: false
+  }
+componentWillMount(){
+  this.props.getAppointments()
+  console.log(this.props)
 }
 
   toggleModal = () => {
@@ -38,25 +41,25 @@ super(props)
     render()    
     
        {  
-       const allAppointments = 
+      //  const allAppointments = 
                 
-                    this.props.appointments.map(appointment=>(
-                        <Card key={appointment.id}>
-                        <ul>
-                        <li>
-                        {appointment.appointmentTime}: 
-                            {appointment.name} Enter your name
-                            {appointment.number} Enter your number
-                            </li> 
-                              </ul>
-                              <button onClick={()=> this.toggleModal()}>Make Appointment</button>
-                              </Card>
-    ))
+      //               this.props.appointments.map(appointment=>(
+      //                   <Card key={appointment.id}>
+      //                   <ul>
+      //                   <li>
+      //                   {appointment.appointmentTime}: 
+      //                       {appointment.name} Enter your name
+      //                       {appointment.number} Enter your number
+      //                       </li> 
+      //                         </ul>
+      //                         <button onClick={()=> this.toggleModal()}>Make Appointment</button>
+      //                         </Card>
+    // ))
              
           
         return (
          <Container>
-        {allAppointments}
+        {/* {allAppointments} */}
   
         <AppointmentForm 
         show={this.state.isOpen}
@@ -75,14 +78,15 @@ super(props)
  
      
     }
-}
+  }
+
 
 const mapStateToProps = (state) => {
     return {
-      appointments: state.appointments
+      appointments: state.appointments.name
 
     }
   }
   
-  export default connect(mapStateToProps)(Appointments)
+  export default connect(mapStateToProps, {getAppointments})(Appointments)
 
