@@ -29,22 +29,19 @@ class AppointmentForm extends Component {
     constructor(props){
         super(props)
 this.state = {
-    newAppointment :{
         name:"",
         number:''
-    },
+    ,
        isOpen: false
 }
+this.handleChange.bind(this)
+this.handleSubmit.bind(this)
     }
 handleChange = (event)=>{
     console.log(event.target.value)
-this.setState({[ event.target.name] :event.target.value})
-    }
+    this.setState({[event.target.name]: event.target.value})
     
-    
-    
-    
-
+}
 //  close=()=>{
 //     this.props.onClose
 // }
@@ -82,16 +79,18 @@ this.props.onClose()
             {this.props.children}
            <label>Enter your name</label>
                      <input 
+                      type='text'
           onChange={this.handleChange}
           name='name'
-          value={this.state.newAppointment.name}
+          value={this.state.name}
         //   placeholder={this.state.newAppointment.name}
         />
         <label>Enter your number</label>
                     <input
+                    type='text'
           onChange={this.handleChange}
           name='number'
-          value={this.state.newAppointment.number}
+          value={this.state.number}
         //   placeholder={this.state.newAppointment.number}
         />
         <div className="footer">
