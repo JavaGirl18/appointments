@@ -26,26 +26,25 @@ padding: 30
 `
 
 class AppointmentForm extends Component {
-state = {
+    constructor(props){
+        super(props)
+this.state = {
     newAppointment :{
         name:"",
         number:''
     },
        isOpen: false
 }
-
+    }
 handleChange = (event)=>{
     console.log(event.target.value)
-    const attributeName = event.target.name
-    const attributeValue = event.target.value
-    const copyOfNewAppointment = {
-        ...this.state.newAppointment
+this.setState({[ event.target.name] :event.target.value})
     }
     
-    copyOfNewAppointment[attributeName] = attributeValue
-    this.setState([{ newAppointment: copyOfNewAppointment}])
     
-}
+    
+    
+
 //  close=()=>{
 //     this.props.onClose
 // }
@@ -103,7 +102,7 @@ this.props.onClose()
      
             </form>
            
-           <addAppointment/>
+           {/* <addAppointment/> */}
          </Backdrop>
         );
     }

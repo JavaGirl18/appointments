@@ -22,7 +22,9 @@ justify-content: space-between;
 `
 
 class Appointments extends Component {
-
+state={
+  isOpen:false
+}
 
 componentWillMount(){
   this.props.getAppointments()
@@ -60,7 +62,7 @@ console.log(this.props)
         {allAppointments}
   
         <AppointmentForm 
-        // show={this.state.isOpen}
+        show={this.state.isOpen}
           onClose={this.toggleModal}>
     
         </AppointmentForm>
