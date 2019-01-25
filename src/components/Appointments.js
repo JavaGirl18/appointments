@@ -41,25 +41,25 @@ componentWillMount(){
     render()    
     
        {  
-      //  const allAppointments = 
+       const allAppointments = 
                 
-      //               this.props.appointments.map(appointment=>(
-      //                   <Card key={appointment.id}>
-      //                   <ul>
-      //                   <li>
-      //                   {appointment.appointmentTime}: 
-      //                       {appointment.name} Enter your name
-      //                       {appointment.number} Enter your number
-      //                       </li> 
-      //                         </ul>
-      //                         <button onClick={()=> this.toggleModal()}>Make Appointment</button>
-      //                         </Card>
-    // ))
+                    this.props.appointments.map(appointment=>(
+                        <Card key={appointment.id}>
+                        <ul>
+                        <li>
+                        {appointment.appointmentTime}: 
+                            {appointment.name} Enter your name
+                            {appointment.number} Enter your number
+                            </li> 
+                              </ul>
+                              <button onClick={()=> this.toggleModal()}>Make Appointment</button>
+                              </Card>
+    ))
              
           
         return (
          <Container>
-        {/* {allAppointments} */}
+        {allAppointments}
   
         <AppointmentForm 
         show={this.state.isOpen}
@@ -81,12 +81,12 @@ componentWillMount(){
   }
 
 
-const mapStateToProps = (state) => {
-    return {
-      appointments: state.appointments.name
+const mapStateToProps = state => ({
+   
+      appointments: state.appointments.items
 
-    }
-  }
+    });
+  
   
   export default connect(mapStateToProps, {getAppointments})(Appointments)
 

@@ -27,10 +27,10 @@ padding: 30
 
 class AppointmentForm extends React.Component {
 state = {
-    newAppointment :[{
+    newAppointment :{
         name:"",
         number:''
-    }],
+    },
        isOpen: false
 }
 

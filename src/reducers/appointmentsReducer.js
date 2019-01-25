@@ -4,8 +4,8 @@ import {GET_APPOINTMENTS, ADD_APPOINTMENT} from '../actions/types'
 
 
 const defaultState={
-   appointments:[],
-       appointment:{}
+   items:[],
+       item:{}
     }
 
   
@@ -16,9 +16,10 @@ export default function(state = defaultState, action){
         default:
       return state;
       case GET_APPOINTMENTS:
+      console.log('reducer')
       return {
           ...state,
-          appointments: action.payload
+          items: action.appointments
       }
        case ADD_APPOINTMENT:
         return {...state,

@@ -17,7 +17,7 @@ export const getAppointments = () => dispatch => {
   };
 
 export const addAppointment = appointmentData => dispatch =>{
-    fetch(' http://localhost:3000/appointments', {
+    fetch('db.json', {
     method: 'POST',
     headers: {
       'content-type': 'application/json'
@@ -28,7 +28,7 @@ export const addAppointment = appointmentData => dispatch =>{
     .then(appointment =>
       dispatch({
         type: ADD_APPOINTMENT,
-        appointment: appointment
+        item: appointment
       })
       .catch((err) => {
         console.log('ERROR', err)
