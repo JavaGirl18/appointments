@@ -49,7 +49,11 @@ handleChange = (event)=>{
 handleSubmit = (event) => {
     console.log("submitting")
     event.preventDefault()
-    this.props.addAppointment(this.state.newAppointment)
+    const appointment ={
+        name: this.state.name,
+        number: this.state.number
+    }
+ this.props.addAppointment(appointment)
 alert('appointment created')
 if(alert){
 this.props.onClose()
@@ -77,13 +81,14 @@ this.props.onClose()
 
             <form onSubmit={this.handleSubmit}>
             {this.props.children}
+        
            <label>Enter your name</label>
                      <input 
                       type='text'
           onChange={this.handleChange}
           name='name'
           value={this.state.name}
-        //   placeholder={this.state.newAppointment.name}
+          placeholder={this.state.name}
         />
         <label>Enter your number</label>
                     <input
@@ -91,7 +96,7 @@ this.props.onClose()
           onChange={this.handleChange}
           name='number'
           value={this.state.number}
-        //   placeholder={this.state.newAppointment.number}
+          placeholder={this.state.number}
         />
         <div className="footer">
             <input type='submit' value="  Create New Appointment"  />
@@ -111,7 +116,8 @@ AppointmentForm.propTypes = {
     onClose: PropTypes.func.isRequired,
     // onSubmit: PropTypes.func.isRequired,
     show: PropTypes.bool,
-    children: PropTypes.node
+    children: PropTypes.node,
+    addAppointment: PropTypes.func.isRequired
   };
 
 export default connect(null, { addAppointment })(AppointmentForm) 

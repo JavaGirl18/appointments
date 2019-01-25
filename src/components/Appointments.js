@@ -28,7 +28,7 @@ state={
 
 componentWillMount(){
   this.props.getAppointments()
-console.log(this.props)
+
 
 }
 
@@ -64,6 +64,7 @@ console.log(this.props)
         <AppointmentForm 
         show={this.state.isOpen}
           onClose={this.toggleModal}>
+  
     
         </AppointmentForm>
           
@@ -82,13 +83,15 @@ console.log(this.props)
 
   Appointments.prototypes={
     getAppointments: PropTypes.func.isRequired,
-    appointments: PropTypes.array.isRequired
+    appointments: PropTypes.array.isRequired,
+    newAppointment: PropTypes.object
   }
 
 
 const mapStateToProps = state => ({
    
-      appointments: state.appointments.items
+      appointments: state.appointments.items,
+      newAppointment : state.appointments.item
 
     });
   

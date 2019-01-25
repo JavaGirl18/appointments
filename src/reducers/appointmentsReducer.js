@@ -22,8 +22,9 @@ export default function(state = defaultState, action){
           items: action.payload
       };
        case ADD_APPOINTMENT:
+       console.log('reducer')
         return {...state,
-             appointment: action.payload
+             item: action.payload
             };
         case 'TOGGLE_SET':
         const newState = state.map(appointment=>{

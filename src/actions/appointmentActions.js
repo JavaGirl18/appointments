@@ -23,22 +23,26 @@ export const getAppointments = () => dispatch => {
 
 export const addAppointment = appointmentData => dispatch =>{
     fetch('db.json', {
-    method: 'POST',
-    headers: {
+
+    method: 'post',
+    headers:{
       'content-type': 'application/json'
     },
     body: JSON.stringify(appointmentData)
-  })
-    .then(res => res.json())
-    .then(appointment =>
-      dispatch({
-        type: ADD_APPOINTMENT,
-        item: appointment
-      })
+    })
+  .then(res => res.text())
+  .then(data=>console.log(data)
+    // .then(appointment =>
+    //   dispatch({
+    //     type: ADD_APPOINTMENT,
+    //     payload: appointment 
+    //   })
+    )
       .catch((err) => {
         console.log('ERROR', err)
     })
-    )
+    
+  }
 
 
 
@@ -47,5 +51,5 @@ export const addAppointment = appointmentData => dispatch =>{
 //       type: 'TOGGLE_SET',
 //       id
 //     }
-  }
+
 
