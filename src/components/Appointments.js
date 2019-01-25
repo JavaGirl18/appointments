@@ -4,7 +4,7 @@ import {toggleSet} from '../actions/appointmentActions'
 import styled from 'styled-components'
 import {getAppointments} from '../actions/appointmentActions'
 import AppointmentForm  from "./AppointmentForm";
-
+import PropTypes from 'prop-types';
 
 const Card=styled.div`
 height 300px;
@@ -22,12 +22,21 @@ justify-content: space-between;
 `
 
 class Appointments extends Component {
-  state={
+  constructor(props){
+  super(props)
+  this.state={
+    appointments:[],
     isOpen: false
   }
+}
+
+
 componentWillMount(){
-  this.props.getAppointments()
-  console.log(this.props)
+  fetch('db.json')
+  .then(res => res.json())
+// .then(res => res.text())          // convert to plain text
+.then(json => this.setState({appointments: json}))
+
 }
 
   toggleModal = () => {
@@ -43,7 +52,7 @@ componentWillMount(){
        {  
        const allAppointments = 
                 
-                    this.props.appointments.map(appointment=>(
+                    this.state.appointments.map(appointment=>(
                         <Card key={appointment.id}>
                         <ul>
                         <li>

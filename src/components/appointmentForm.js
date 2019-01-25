@@ -25,7 +25,7 @@ margin: '0 auto',
 padding: 30
 `
 
-class AppointmentForm extends React.Component {
+class AppointmentForm extends Component {
 state = {
     newAppointment :{
         name:"",

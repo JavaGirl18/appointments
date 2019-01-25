@@ -19,7 +19,7 @@ export default function(state = defaultState, action){
       console.log('reducer')
       return {
           ...state,
-          items: action.appointments
+          items: action.payload
       }
        case ADD_APPOINTMENT:
         return {...state,
