@@ -11,7 +11,7 @@ export const getAppointments = () => dispatch => {
       .then(appointments =>
         dispatch({
           type: GET_APPOINTMENTS,
-          payload: appointments
+          appointments: appointments
         })
       );
   };

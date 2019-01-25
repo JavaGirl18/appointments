@@ -22,21 +22,11 @@ justify-content: space-between;
 `
 
 class Appointments extends Component {
-  constructor(props){
-  super(props)
-  this.state={
-    appointments:[],
-    isOpen: false
-  }
-}
 
 
 componentWillMount(){
-  fetch('db.json')
-  .then(res => res.json())
-// .then(res => res.text())          // convert to plain text
-.then(json => this.setState({appointments: json}))
-
+  this.props.getAppointments()
+console.log(this.props.appointments)
 }
 
   toggleModal = () => {
@@ -52,15 +42,13 @@ componentWillMount(){
        {  
        const allAppointments = 
                 
-                    this.state.appointments.map(appointment=>(
+                    this.props.appointments.map(appointment=>(
                         <Card key={appointment.id}>
-                        <ul>
-                        <li>
+                        
                         {appointment.appointmentTime}: 
-                            {appointment.name} Enter your name
-                            {appointment.number} Enter your number
-                            </li> 
-                              </ul>
+                            {appointment.name} 
+                            {appointment.number} 
+                           
                               <button onClick={()=> this.toggleModal()}>Make Appointment</button>
                               </Card>
     ))
@@ -71,7 +59,7 @@ componentWillMount(){
         {allAppointments}
   
         <AppointmentForm 
-        show={this.state.isOpen}
+        // show={this.state.isOpen}
           onClose={this.toggleModal}>
     
         </AppointmentForm>

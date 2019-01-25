@@ -20,7 +20,7 @@ export default function(state = defaultState, action){
       return {
           ...state,
           items: action.payload
-      }
+      };
        case ADD_APPOINTMENT:
         return {...state,
              appointment: action.payload
