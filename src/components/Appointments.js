@@ -63,7 +63,8 @@ componentWillMount(){
   
         <AppointmentForm 
         show={this.state.isOpen}
-          onClose={this.toggleModal}>
+          onClose={this.toggleModal}
+          appointments={allAppointments}>
   
     
         </AppointmentForm>

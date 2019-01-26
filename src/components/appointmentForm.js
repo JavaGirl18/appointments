@@ -29,6 +29,7 @@ class AppointmentForm extends Component {
     constructor(props){
         super(props)
 this.state = {
+    appointmentTime:this.props.appointmentTime,
         name:"",
         number:''
     ,

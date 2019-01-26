@@ -4,10 +4,10 @@ import{ GET_APPOINTMENTS, ADD_APPOINTMENT} from './types';
 
 
 export const getAppointments = () => dispatch => {
-    fetch('db.json')
-      .then(res => res.json())
-    // .then(res => res.text())          // convert to plain text
-//   .then(json => console.log(json))
+    fetch('https://my-json-server.typicode.com/javagirl18/data/appointments')
+      // .then(res => res.json())
+    .then(res => res.json())          // convert to plain text
+  // .then(json => console.log(json))
       .then(appointments =>
         dispatch({
           type: GET_APPOINTMENTS,
@@ -22,21 +22,22 @@ export const getAppointments = () => dispatch => {
 
 
 export const addAppointment = appointmentData => dispatch =>{
-    fetch('db.json', {
+    fetch('https://my-json-server.typicode.com/javagirl18/data/appointments', {
 
     method: 'post',
     headers:{
-      'content-type': 'application/json'
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
     },
     body: JSON.stringify(appointmentData)
     })
-  .then(res => res.text())
-  .then(data=>console.log(data)
-    // .then(appointment =>
-    //   dispatch({
-    //     type: ADD_APPOINTMENT,
-    //     payload: appointment 
-    //   })
+  .then(res => res.json())
+
+    .then(appointment =>
+      dispatch({
+        type: ADD_APPOINTMENT,
+        payload: appointment 
+      })
     )
       .catch((err) => {
         console.log('ERROR', err)
