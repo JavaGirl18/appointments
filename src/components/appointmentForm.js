@@ -29,7 +29,7 @@ class AppointmentForm extends Component {
     constructor(props){
         super(props)
 this.state = {
-    appointmentTime:this.props.appointmentTime,
+    appointmentTime:'',
         name:"",
         number:''
     ,
@@ -47,20 +47,21 @@ handleChange = (event)=>{
 //     this.props.onClose
 // }
 
-handleSubmit = (event) => {
-    console.log("submitting")
-    event.preventDefault()
-    const appointment ={
-        name: this.state.name,
-        number: this.state.number
-    }
- this.props.addAppointment(appointment)
-alert('appointment created')
-if(alert){
-this.props.onClose()
-}
+// handleSubmit = (event) => {
+//     console.log("submitting")
+//     event.preventDefault()
+//     const appointment ={
+//         name: this.state.name,
+//         number: this.state.number,
+//         appointmentTime: this.props.appointmentTime
+//     }
+//  this.props.addAppointment(appointment)
+// alert('appointment created')
+// if(alert){
+// this.props.onClose()
+// }
 
-  }
+//   }
 
 
 
@@ -82,7 +83,14 @@ this.props.onClose()
 
             <form onSubmit={this.handleSubmit}>
             {this.props.children}
+            <input 
+                      type='text'
+          onChange={this.handleChange}
+          name='name'
+          value={this.props.appointmentTime}
         
+          placeholder={this.props.appointmentTime}
+        />
            <label>Enter your name</label>
                      <input 
                       type='text'

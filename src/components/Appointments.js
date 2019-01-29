@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import {getAppointments} from '../actions/appointmentActions'
 import AppointmentForm  from "./AppointmentForm";
 import PropTypes from 'prop-types';
-
+import {Link} from 'react-router-dom'
 const Card=styled.div`
 height 300px;
 width: 300px;
@@ -39,24 +39,84 @@ componentWillMount(){
     });
   }
 
+  handleSubmit = (event) => {
+    console.log("submitting")
+    event.preventDefault()
+    const appointment ={
+        name: this.state.name,
+        number: this.state.number,
+        appointmentTime: this.state.appointmentTime
+    }
+ this.props.addAppointment(appointment)
+alert('appointment created')
+if(alert){
+this.props.onClose()
+}
 
-    render()    
+  }
+
+
+
+    render() 
     
+ 
        {  
+        if(this.props.show) {
+          return null;
+        }
        const allAppointments = 
                 
                     this.props.appointments.map(appointment=>(
                         <Card key={appointment.id}>
-                        
-                        {appointment.appointmentTime}: 
+    
+                        {appointment.appointmentTime}
                             {appointment.name} 
                             {appointment.number} 
                            
-                              <button onClick={()=> this.toggleModal()}>Make Appointment</button>
+                             
+                             <button onClick={()=> this.toggleModal()}>Make Appointment</button>
+                             <button onClick={()=> this.toggleModal()}>{appointment.id}View Appoinment</button>
                               </Card>
+
+                              
     ))
-             
-          
+         
+  const form=(
+      <form onSubmit={this.handleSubmit}>
+      {this.props.children}
+      <input 
+                type='text'
+    onChange={this.handleChange}
+    name='appointmentTime'
+    value={this.state.appointmentTime}
+  
+    placeholder={this.props.appointmentTime}
+  />
+     <label>Enter your name</label>
+               <input 
+                type='text'
+    onChange={this.handleChange}
+    name='name'
+    value={this.state.name}
+    placeholder={this.state.name}
+  />
+  <label>Enter your number</label>
+              <input
+              type='text'
+    onChange={this.handleChange}
+    name='number'
+    value={this.state.number}
+    placeholder={this.state.number}
+  />
+  <div className="footer">
+      <input type='submit' value="  Create New Appointment"  />
+    
+   
+    </div>
+  
+      </form>
+
+  )          
         return (
          <Container>
         {allAppointments}
@@ -85,14 +145,18 @@ componentWillMount(){
   Appointments.prototypes={
     getAppointments: PropTypes.func.isRequired,
     appointments: PropTypes.array.isRequired,
-    newAppointment: PropTypes.object
+    newAppointment: PropTypes.object,
+    onClose: PropTypes.func.isRequired,
+    show: PropTypes.bool,
+    children: PropTypes.node,
+    addAppointment: PropTypes.func.isRequired
   }
 
 
 const mapStateToProps = state => ({
    
       appointments: state.appointments.items,
-      newAppointment : state.appointments.item
+      newAppointment : state.appointments.items
 
     });
   
