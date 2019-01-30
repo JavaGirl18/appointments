@@ -1,6 +1,5 @@
 
-import{ GET_APPOINTMENTS, ADD_APPOINTMENT} from './types';
-import axios from 'axios'
+import{ GET_APPOINTMENTS, UPDATE} from './types';
 
 
 export const getAppointments = () => dispatch => {
@@ -40,29 +39,29 @@ export const getAppointments = () => dispatch => {
   
 
 
-export const addAppointment = appointmentData => dispatch =>{
-    fetch('https://my-json-server.typicode.com/javagirl18/data/appointments', {
+// export const addAppointment = appointmentData => dispatch =>{
+//     fetch('https://my-json-server.typicode.com/javagirl18/data/appointments', {
 
-    method: 'put',
-    headers:{
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(appointmentData)
-    })
-  .then(res => res.json())
+//     method: 'put',
+//     headers:{
+//       'Accept': 'application/json',
+//       'Content-Type': 'application/json'
+//     },
+//     body: JSON.stringify(appointmentData)
+//     })
+//   .then(res => res.json())
 
-    .then(appointments =>
-      dispatch({
-        type: ADD_APPOINTMENT,
-        payload: appointments 
-      })
-    )
-      .catch((err) => {
-        console.log('ERROR', err)
-    })
+//     .then(appointments =>
+//       dispatch({
+//         type: ADD_APPOINTMENT,
+//         payload: appointments 
+//       })
+//     )
+//       .catch((err) => {
+//         console.log('ERROR', err)
+//     })
     
-  }
+//   }
 
 
 

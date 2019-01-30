@@ -29,39 +29,35 @@ class AppointmentForm extends Component {
     constructor(props){
         super(props)
 this.state = {
-    appointmentTime:'',
-        name:"",
-        number:''
-    ,
        isOpen: false
 }
-this.handleChange.bind(this)
-this.handleSubmit.bind(this)
-    }
-handleChange = (event)=>{
-    console.log(event.target.value)
-    this.setState({[event.target.name]: event.target.value})
+// this.handleChange.bind(this)
+// this.handleSubmit.bind(this)
+//     }
+// handleChange = (event)=>{
+//     console.log(event.target.value)
+//     this.setState({[event.target.name]: event.target.value})
     
-}
+// }
 //  close=()=>{
 //     this.props.onClose
 // }
+    }
+handleSubmit = (event) => {
+    console.log("submitting")
+    event.preventDefault()
+    const appointment ={
+        name: this.getName.value,
+        number: this.getNumber.value,
+        appointmentTime: this.props.appointmentTime
+    }
+ this.props.dispatch({type: 'UPDATE', id: this.props.appointment.id, appointment:appointment})
+alert('appointment created')
+if(alert){
+this.props.onClose()
+}
 
-// handleSubmit = (event) => {
-//     console.log("submitting")
-//     event.preventDefault()
-//     const appointment ={
-//         name: this.state.name,
-//         number: this.state.number,
-//         appointmentTime: this.props.appointmentTime
-//     }
-//  this.props.addAppointment(appointment)
-// alert('appointment created')
-// if(alert){
-// this.props.onClose()
-// }
-
-//   }
+  }
 
 
 
@@ -73,7 +69,7 @@ handleChange = (event)=>{
   }
 
     render() {
-        console.log(this.state)
+        console.log(this.props)
   if(!this.props.show) {
       return null;
     }
@@ -83,29 +79,9 @@ handleChange = (event)=>{
 
             <form onSubmit={this.handleSubmit}>
             {this.props.children}
-            <input 
-                      type='text'
-          onChange={this.handleChange}
-          name='name'
-          value={this.props.appointmentTime}
-        
-          placeholder={this.props.appointmentTime}
-        />
-           <label>Enter your name</label>
-                     <input 
-                      type='text'
-          onChange={this.handleChange}
-          name='name'
-          value={this.state.name}
-          placeholder={this.state.name}
-        />
-        <label>Enter your number</label>
-                    <input
-                    type='text'
-          onChange={this.handleChange}
-          name='number'
-          value={this.state.number}
-          placeholder={this.state.number}
+            <input  type='text' defaultValue={this.props.appointmentTime} placeholder={this.props.appointmentTime}/>
+            <input required type='text'  defaultValue={this.props.name} ref={(input)=> this.getName=input} placeholder="Enter your name"/>
+            <input type='text' defaultValue={this.props.number} ref={(input)=> this.getNumber=input} placeholder="Enter your number"
         />
         <div className="footer">
             <input type='submit' value="  Create New Appointment"  />
@@ -126,7 +102,7 @@ AppointmentForm.propTypes = {
     // onSubmit: PropTypes.func.isRequired,
     show: PropTypes.bool,
     children: PropTypes.node,
-    addAppointment: PropTypes.func.isRequired
+    // addAppointment: PropTypes.func.isRequired
   };
 
-export default connect(null, { addAppointment })(AppointmentForm) 
+export default connect(null,)(AppointmentForm) 

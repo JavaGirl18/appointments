@@ -39,21 +39,7 @@ componentWillMount(){
     });
   }
 
-  handleSubmit = (event) => {
-    console.log("submitting")
-    event.preventDefault()
-    const appointment ={
-        name: this.state.name,
-        number: this.state.number,
-        appointmentTime: this.state.appointmentTime
-    }
- this.props.addAppointment(appointment)
-alert('appointment created')
-if(alert){
-this.props.onClose()
-}
 
-  }
 
 
 
@@ -64,10 +50,15 @@ this.props.onClose()
         if(this.props.show) {
           return null;
         }
-       const allAppointments = 
+      //  const allAppointments = 
                 
-                    this.props.appointments.map(appointment=>(
-                        <Card key={appointment.id}>
+                  
+          
+        return (
+         <Container>
+           <h1>Available Appointments</h1>
+      {this.props.appointments.map(appointment=>(
+                        <div key={appointment.id}>
     
                         {appointment.appointmentTime}
                             {appointment.name} 
@@ -75,59 +66,24 @@ this.props.onClose()
                            
                              
                              <button onClick={()=> this.toggleModal()}>Make Appointment</button>
-                             <button onClick={()=> this.toggleModal()}>{appointment.id}View Appoinment</button>
-                              </Card>
+                             {/* <button onClick={()=> this.toggleModal()}>{appointment.id}View Appoinment</button> */}
+                                 <AppointmentForm 
+ key={appointment.id}
+ appointment={appointment}
+        show={this.state.isOpen}
+          onClose={this.toggleModal} />  
+                       
+                              </div>
 
                               
-    ))
+    ))}
          
-  const form=(
-      <form onSubmit={this.handleSubmit}>
-      {this.props.children}
-      <input 
-                type='text'
-    onChange={this.handleChange}
-    name='appointmentTime'
-    value={this.state.appointmentTime}
   
-    placeholder={this.props.appointmentTime}
-  />
-     <label>Enter your name</label>
-               <input 
-                type='text'
-    onChange={this.handleChange}
-    name='name'
-    value={this.state.name}
-    placeholder={this.state.name}
-  />
-  <label>Enter your number</label>
-              <input
-              type='text'
-    onChange={this.handleChange}
-    name='number'
-    value={this.state.number}
-    placeholder={this.state.number}
-  />
-  <div className="footer">
-      <input type='submit' value="  Create New Appointment"  />
-    
-   
-    </div>
-  
-      </form>
+  <Card>
 
-  )          
-        return (
-         <Container>
-        {allAppointments}
-  
-        <AppointmentForm 
-        show={this.state.isOpen}
-          onClose={this.toggleModal}
-          appointments={allAppointments}>
-  
-    
-        </AppointmentForm>
+
+
+  </Card>
           
      </Container>
 
@@ -155,8 +111,7 @@ this.props.onClose()
 
 const mapStateToProps = state => ({
    
-      appointments: state.appointments.items,
-      newAppointment : state.appointments.items
+      appointments: state.appointments.items
 
     });
   

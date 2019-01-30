@@ -1,4 +1,4 @@
-import {GET_APPOINTMENTS, ADD_APPOINTMENT} from '../actions/types'
+import {GET_APPOINTMENTS, UPDATE} from '../actions/types'
 
 
 
@@ -21,10 +21,19 @@ export default function(state = defaultState, action){
           ...state,
           items: action.payload
       };
-       case ADD_APPOINTMENT:
-        return {...state,
-             items: action.payload
-            };
+       case UPDATE:
+        return state.map((appointment)=>{
+            if(appointment.id === action.id){
+                return {
+                    ...state,
+                    appointmentTime:action.appointment.appointmentTime,
+                    name:action.appointment.name,
+                    number:action.appointment.number,
+                    set: true
+                }
+            }
+        })
+            
         case 'TOGGLE_SET':
         const newState = state.map(appointment=>{
             if (appointment.id === action.id){
