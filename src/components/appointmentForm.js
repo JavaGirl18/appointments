@@ -75,7 +75,7 @@ this.props.onClose()
     }
     
         return (
-            <Backdrop>
+            <div key={this.props.appointment.id}>
 
             <form onSubmit={this.handleSubmit}>
             {this.props.children}
@@ -92,7 +92,7 @@ this.props.onClose()
             </form>
            
            {/* <addAppointment/> */}
-         </Backdrop>
+         </div>
         );
     }
 }

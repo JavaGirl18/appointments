@@ -47,9 +47,7 @@ componentWillMount(){
     
  
        {  
-        if(this.props.show) {
-          return null;
-        }
+       
       //  const allAppointments = 
                 
                   

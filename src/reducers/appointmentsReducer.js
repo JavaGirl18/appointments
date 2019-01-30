@@ -25,13 +25,13 @@ export default function(state = defaultState, action){
         return state.map((appointment)=>{
             if(appointment.id === action.id){
                 return {
-                    ...state,
+                    ...appointment,
                     appointmentTime:action.appointment.appointmentTime,
                     name:action.appointment.name,
                     number:action.appointment.number,
                     set: true
                 }
-            }
+            } else return appointment
         })
             
         case 'TOGGLE_SET':
