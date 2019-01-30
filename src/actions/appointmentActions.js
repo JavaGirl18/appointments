@@ -19,16 +19,15 @@ export const getAppointments = () => dispatch => {
     
   }
 
-  // export const getOneAppointment = (id) => dispatch => {
-  //   const id= request.params.id
+  // export const updateAppointment = (id) => dispatch => {
   //   axios.get(`https://my-json-server.typicode.com/javagirl18/data/appointments/${id}`)
   //     // .then(res => res.json())
   //   .then(res => res.json())          // convert to plain text
   // // .then(json => console.log(json))
   //     .then(appointment =>
   //       dispatch({
-  //         type: GET_APPOINTMENTS,
-  //         payload: appointment
+  //         type: UPDATE,
+  //         payload: appointments
   //       })
   //     )
   //     .catch((err) => {
