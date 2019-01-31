@@ -1,2 +1,3 @@
 export const GET_APPOINTMENTS ='GET_APPOINTMENTS';
 export const UPDATE = 'UPDATE'
+export const TOGGLE_FORM = 'TOGGLE_FORM'

@@ -1,4 +1,4 @@
-import {GET_APPOINTMENTS, UPDATE} from '../actions/types'
+import {GET_APPOINTMENTS, UPDATE, TOGGLE_FORM} from '../actions/types'
 
 
 
@@ -38,14 +38,17 @@ export default function(state = defaultState, action){
  
 
             
-        // case 'TOGGLE_SET':
-        // const newState = state.map(appointment=>{
-        //     if (appointment.id === action.id){
-        //         appointment.set = !appointment.set
-        //     }
-        //     return appointment
-        // })
-        // return newState
+    //     case TOGGLE_FORM:
+    //     const toggleState = { ...state }
+    //     const targetCard = toggleState.items.find(appointment => appointment.id === action.id)
+    //     if(appointment.id === action.id){
+    //         return{
+    //          toggleState,
+    //         isOpen: true
+    //     }
+    // }
+           
+     
     }
 }
 

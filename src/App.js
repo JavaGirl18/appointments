@@ -21,9 +21,11 @@ class App extends Component {
       )
     }
     return (
+      <div class = "mainApp">
       <Provider store={store}>
         <AllAppointments/>
       </Provider>
+      </div>
     );
   }
 }

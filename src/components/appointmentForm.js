@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux'
-import {addAppointment} from '../actions/appointmentActions'
+
 import styled from 'styled-components'
 import PropTypes from 'prop-types';
 
@@ -29,47 +29,55 @@ class AppointmentForm extends Component {
     constructor(props){
         super(props)
 this.state = {
-       isOpen: false
+    appointment:{
+    name:'',
+    number:''
+},
+isOpen: false
 }
-// this.handleChange.bind(this)
-// this.handleSubmit.bind(this)
-//     }
-// handleChange = (event)=>{
-//     console.log(event.target.value)
-//     this.setState({[event.target.name]: event.target.value})
-    
-// }
-//  close=()=>{
-//     this.props.onClose
-// }
+
     }
+
+    handleUpdate = event => {
+        const copyOfState = { ...this.state.appointment };
+        const attributeName = event.target.name;
+        const attributeValue = event.target.value;
+        copyOfState[attributeName] = attributeValue;
+    
+        this.setState({ appointment: copyOfState });
+      };
+
 handleSubmit = (event) => {
     console.log("submitting")
     event.preventDefault()
     const appointment ={
         name: this.getName.value,
         number: this.getNumber.value,
-        appointmentTime: this.props.appointmentTime
+        // appointmentTime: this.props.appointmentTime
     }
+    this.setState({appointment})
+    console.log(this.state)
  this.props.dispatch({type: 'UPDATE', id: this.props.appointment.id, appointment:appointment})
+
 alert('appointment created')
 if(alert){
 this.props.onClose()
+
 }
 
   }
 
 
 
-  toggleModal = () => {
-    console.log('toggle')
-    this.setState({
-      isOpen: !this.state.isOpen
-    });
-  }
+//   toggleModal = () => {
+//     console.log('toggle')
+//     this.setState({
+//       isOpen: !this.state.isOpen
+//     });
+//   }
 
     render() {
-        console.log(this.props)
+        // console.log(this.props)
   if(!this.props.show) {
       return null;
     }
@@ -79,12 +87,11 @@ this.props.onClose()
 
             <form onSubmit={this.handleSubmit}>
             {this.props.children}
-            <input  type='text' defaultValue={this.props.appointmentTime} placeholder={this.props.appointmentTime}/>
-            <input required type='text'  defaultValue={this.props.name} ref={(input)=> this.getName=input} placeholder="Enter your name"/>
-            <input type='text' defaultValue={this.props.number} ref={(input)=> this.getNumber=input} placeholder="Enter your number"
+            <input class ="inputData" name='name' required type='text' onChange={this.handleUpdate}  value={this.state.appointment.name} ref={(input)=> this.getName=input} placeholder="Enter your name"/>
+            <input class ="inputData" name='number' type='text' onChange={this.handleUpdate}  value={this.state.appointment.number} ref={(input)=> this.getNumber=input} placeholder="Enter your number"
         />
         <div className="footer">
-            <input type='submit' value="  Create New Appointment"  />
+            <input class='submit' type='submit' value="  Create New Appointment"  />
           
          
           </div>

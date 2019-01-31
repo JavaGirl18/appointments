@@ -5,21 +5,12 @@ import styled from 'styled-components'
 import {getAppointments} from '../actions/appointmentActions'
 import AppointmentForm  from "./AppointmentForm";
 import PropTypes from 'prop-types';
-import {Link} from 'react-router-dom'
-const Card=styled.div`
-height 300px;
-width: 300px;
-padding: 50px;
-background-color:blue;
-border:solid;
-border-radius: 30px;
-box-shadow:  10px 10px 5px #888888;
-`
-const Container = styled.div`
-padding: 30px;
-display: flex;
-justify-content: space-between;
-`
+import { Card, Button, CardTitle, CardText } from 'reactstrap';
+import ShowAppointments from './ShowAppointments';
+
+
+
+
 
 class Appointments extends Component {
 state={
@@ -39,8 +30,7 @@ componentWillMount(){
     });
   }
 
-
-
+  
 
 
     render() 
@@ -52,18 +42,22 @@ componentWillMount(){
                 
                   
           
-        return (
-         <Container>
-           <h1>Available Appointments</h1>
+        return ( 
+          <div class="parentContainer">
+        <h1 class="center">Available Appointments</h1>
+         <div class ='container' >
+          
       {this.props.appointments.map(appointment=>(
-                        <div key={appointment.id}>
+                        <Card class='card' body inverse color="info" key={appointment.id}>
     
-                        {appointment.appointmentTime}
+                       <CardTitle>{appointment.appointmentTime}</CardTitle> 
+                        <br></br>
                             {appointment.name} 
+                            <br></br>
                             {appointment.number} 
                            
                              
-                             <button onClick={()=> this.toggleModal()}>Make Appointment</button>
+                             <Button color="secondary" onClick={()=> this.toggleModal()}>Make Appointment</Button>
                              {/* <button onClick={()=> this.toggleModal()}>{appointment.id}View Appoinment</button> */}
                                  <AppointmentForm 
  key={appointment.id}
@@ -71,20 +65,17 @@ componentWillMount(){
         show={this.state.isOpen}
           onClose={this.toggleModal} />  
                        
-                              </div>
+                     
+                              </Card>
 
                               
     ))}
          
   
-  <Card>
-
-
-
-  </Card>
+ 
           
-     </Container>
-
+     </div>
+</div>
            
            
         );

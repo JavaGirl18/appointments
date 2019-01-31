@@ -6,9 +6,27 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
 
+    background-color:blue;
+
+}
+.center {
+  text-align: center;
+  }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+.card{
+color:pink;
+}
+.container{
+  padding: 30px;
+display: flex;
+justify-content: space-between;
+border:solid;
+background-color: #f5f5f5;
+}
+.parentContainer{
+  background-color:#f0f0f0;
 }
