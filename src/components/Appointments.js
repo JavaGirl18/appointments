@@ -57,7 +57,7 @@ componentWillMount(){
                             {appointment.number} 
                            
                              
-                             <Button color="secondary" onClick={()=> this.toggleModal()}>Make Appointment</Button>
+                            
                              {/* <button onClick={()=> this.toggleModal()}>{appointment.id}View Appoinment</button> */}
                                  <AppointmentForm 
  key={appointment.id}
@@ -69,12 +69,9 @@ componentWillMount(){
                               </Card>
 
                               
-    ))}
-         
-  
- 
-          
+    ))}     
      </div>
+     <Button color="secondary" onClick={()=> this.toggleModal()}>Make Appointment</Button>
 </div>
            
            
@@ -106,4 +103,3 @@ const mapStateToProps = state => ({
   
   
   export default connect(mapStateToProps, {getAppointments})(Appointments)
-

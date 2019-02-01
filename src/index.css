@@ -17,16 +17,30 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-.card{
-color:pink;
-}
+/* .card{
+justify-content: space-between !important;
+} */
 .container{
   padding: 30px;
 display: flex;
-justify-content: space-between;
-border:solid;
+/* justify-content: space-between; */
+/* border:solid; */
 background-color: #f5f5f5;
+
+
+}
+.form{
+  max-width: 50px;
 }
 .parentContainer{
   background-color:#f0f0f0;
+width: 100%;
+}
+.formInfo{
+  /* border:solid; */
+  align-items: center;
+}
+.red{
+  background-color: red;
+  color:red;
 }

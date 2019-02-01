@@ -16,14 +16,7 @@ padding: 50
 border:solid;
 
 `
-const Form = styled.div`
-backgroundColor: '#fff',
-borderRadius: 5,
-maxWidth: 500,
-minHeight: 300,
-margin: '0 auto',
-padding: 30
-`
+
 
 class AppointmentForm extends Component {
     constructor(props){
@@ -31,12 +24,16 @@ class AppointmentForm extends Component {
 this.state = {
     appointment:{
     name:'',
-    number:''
+    number:'',
+    set: false
 },
-isOpen: false
+isOpen: false, 
+red: false
 }
 
     }
+
+  
 
     handleUpdate = event => {
         const copyOfState = { ...this.state.appointment };
@@ -51,30 +48,36 @@ handleSubmit = (event) => {
     console.log("submitting")
     event.preventDefault()
     const appointment ={
+        id: this.state.appointment.id,
         name: this.getName.value,
         number: this.getNumber.value,
+        set: true
         // appointmentTime: this.props.appointmentTime
     }
     this.setState({appointment})
-    console.log(this.state)
+    console.log(appointment)
  this.props.dispatch({type: 'UPDATE', id: this.props.appointment.id, appointment:appointment})
-
 alert('appointment created')
 if(alert){
 this.props.onClose()
 
+}
+if(appointment.set === true){
+  
+// this.props.changeColor()
+console.log("true")
 }
 
   }
 
 
 
-//   toggleModal = () => {
-//     console.log('toggle')
-//     this.setState({
-//       isOpen: !this.state.isOpen
-//     });
-//   }
+  toggleModal = () => {
+    console.log('toggle')
+    this.setState({
+      isOpen: !this.state.isOpen
+    });
+  }
 
     render() {
         // console.log(this.props)
@@ -83,9 +86,9 @@ this.props.onClose()
     }
     
         return (
-            <div key={this.props.appointment.id}>
+            <div>
 
-            <form onSubmit={this.handleSubmit}>
+            <form class="form" onSubmit={this.handleSubmit}>
             {this.props.children}
             <input class ="inputData" name='name' required type='text' onChange={this.handleUpdate}  value={this.state.appointment.name} ref={(input)=> this.getName=input} placeholder="Enter your name"/>
             <input class ="inputData" name='number' type='text' onChange={this.handleUpdate}  value={this.state.appointment.number} ref={(input)=> this.getNumber=input} placeholder="Enter your number"

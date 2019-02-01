@@ -32,6 +32,7 @@ export default function(state = defaultState, action){
         targetAppointment.name = action.appointment.name
         targetAppointment.number = action.appointment.number
         targetAppointment.set = true
+       
         // return cloned state, this should have the mutated appointment inside
         return newState
   
