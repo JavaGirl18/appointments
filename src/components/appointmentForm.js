@@ -14,6 +14,7 @@ right: 0,
 backgroundColor: 'rgba(0,0,0,0.3)',
 padding: 50
 border:solid;
+
 `
 
 
@@ -24,7 +25,8 @@ this.state = {
     appointment:{
     name:'',
     number:'',
-    set: false
+    set: false,
+    id:null
 },
 isOpen: false, 
 red: false
@@ -79,7 +81,7 @@ console.log("true")
 //   }
 
     render() {
-        // console.log(this.props)
+   
   if(!this.props.show) {
       return null;
     }
