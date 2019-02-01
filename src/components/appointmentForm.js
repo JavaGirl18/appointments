@@ -14,7 +14,6 @@ right: 0,
 backgroundColor: 'rgba(0,0,0,0.3)',
 padding: 50
 border:solid;
-
 `
 
 
@@ -72,12 +71,12 @@ console.log("true")
 
 
 
-  toggleModal = () => {
-    console.log('toggle')
-    this.setState({
-      isOpen: !this.state.isOpen
-    });
-  }
+//   toggleModal = () => {
+//     console.log('toggle')
+//     this.setState({
+//       isOpen: !this.state.isOpen
+//     });
+//   }
 
     render() {
         // console.log(this.props)
