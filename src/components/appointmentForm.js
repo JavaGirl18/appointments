@@ -14,7 +14,6 @@ right: 0,
 backgroundColor: 'rgba(0,0,0,0.3)',
 padding: 50
 border:solid;
-
 `
 
 
@@ -28,8 +27,8 @@ this.state = {
     set: false,
     id:null
 },
-isOpen: false, 
-red: false
+// isOpen: false, 
+// red: false
 }
 
     }
@@ -82,7 +81,8 @@ console.log("true")
 
     render() {
    
-  if(!this.props.show) {
+  if(!this.props.isOpen) {
+      console.log("testin stuff")
       return null;
     }
     

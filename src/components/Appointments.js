@@ -4,6 +4,7 @@ import {toggleSet} from '../actions/appointmentActions'
 import styled from 'styled-components'
 import {getAppointments} from '../actions/appointmentActions'
 import AppointmentForm  from "./AppointmentForm";
+import AppointmentList from './AppointmentList'
 import PropTypes from 'prop-types';
 import { Card, Button, CardTitle, CardText } from 'reactstrap';
 
@@ -13,9 +14,8 @@ import { Card, Button, CardTitle, CardText } from 'reactstrap';
 
 
 class Appointments extends Component {
-state={
-  isOpen:false
-}
+
+  
 
 componentWillMount(){
   this.props.getAppointments()
@@ -26,48 +26,28 @@ componentWillMount(){
   toggleModal = (key) => {
     console.log(key)
     this.setState({
-      isOpen: !this.state.isOpen
+   isOpen: !this.state.isOpen
     });
   }
 
-  
+ 
 
 
     render() 
-    
- 
-       {       
-        return ( 
-          <div class="parentContainer">
-        <h1 class="center">Available Appointments</h1>
-         <div class ='container' >
-          
-      {this.props.appointments.map((appointment, index)=>(
-                        <Card class='card' body inverse color="info" key={index}>
-    
-                       <CardTitle>{appointment.appointmentTime}</CardTitle> 
-                        <br></br>
-                            {appointment.name} 
-                            <br></br>
-                            {appointment.number} 
-                           
-                             
-                            
-                            <Button color="secondary" onClick={()=> this.toggleModal(`appointment${index}`)}>Make Appointment</Button>
-                                 <AppointmentForm 
- key={appointment.id}
- appointment={appointment}
-        show={this.state.isOpen}
-          onClose={this.toggleModal} />  
-                       
-                     
-                              </Card>
+    {
+     const appointments =  this.props.appointments
 
-                              
-    ))}     
+                                 
+        return ( 
+          <div>
+        <h1 class="center">Available Appointments</h1>
+        {appointments.map(appointment=>
+          <AppointmentList key={appointment.id} appointment={appointment}/>
+          )} 
+     
      </div>
  
-</div>
+
            
            
         );
